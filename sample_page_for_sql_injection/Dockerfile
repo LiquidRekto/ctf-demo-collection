@@ -16,9 +16,11 @@ EXPOSE 5000
 # Define environment variable
 ENV FLASK_APP=login.py
 
-# Setup MYSQL
-CMD ["sh", "-c", "mysql -u root -p 123 -e 'CREATE DATABASE IF NOT EXISTS mydatabase;'"]
+# Copy the entrypoint script
+COPY docker-entrypoint.sh /usr/local/bin/
 
+# Make the script executable
+RUN chmod +x /usr/local/bin/docker-entrypoint.sh
 
-# Run app.py when the container launches
-CMD ["flask", "run", "--host=0.0.0.0"]
+# Set the entrypoint
+ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
