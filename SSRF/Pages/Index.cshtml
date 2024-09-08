@@ -1,0 +1,19 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<h2>SSRF Demo</h2>
+
+<form method="post">
+    <label>Enter URL to fetch:</label><br>
+    <input type="text" name="url" placeholder="http://example.com" />
+    <input type="submit" value="Fetch" />
+</form>
+
+@if (Model.FetchResult != null)
+{
+    <h3>Fetched Content</h3>
+    <pre>@Model.FetchResult</pre>
+}
