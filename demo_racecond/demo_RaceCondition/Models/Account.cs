@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace demo_RaceCondition.Models
 {
-    public partial class Acccount
+    public partial class Account
     {
         public int Id { get; set; }
         public string Name { get; set; } = null!;

@@ -4,22 +4,22 @@ public class UserService
 {
     private readonly demo_bypassContext _context;
 
-    private Acccount? _currentUser;
+    private Account? _currentUser;
 
     public UserService(demo_bypassContext context)
     {
         _context = context;
     }
 
-    public IEnumerable<Acccount> GetAllUsers()
+    public IEnumerable<Account> GetAllUsers()
     {
-        return _context.Acccounts.ToList();
+        return _context.Accounts.ToList();
     }
 
-    public Acccount? GetUserById(int id)
+    public Account? GetUserById(int id)
     {
         // Find a user by their ID
-        var account = _context.Acccounts.FirstOrDefault(a => a.Id == id);
+        var account = _context.Accounts.FirstOrDefault(a => a.Id == id);
 
         return account;
     }
@@ -53,18 +53,18 @@ public class UserService
         var user = GetUserById(id);
         if (user != null)
         {
-            _context.Acccounts.Remove(user);
+            _context.Accounts.Remove(user);
             _context.SaveChanges();
         }
     }
 
-    public Acccount? Login(string email, string password)
+    public Account? Login(string email, string password)
     {
         // Authenticate user by email and password
-        var account = _context.Acccounts.FirstOrDefault(u => u.Email == email && u.Password == password);
+        var account = _context.Accounts.FirstOrDefault(u => u.Email == email && u.Password == password);
         if (account != null)
         {
-            _currentUser = new Acccount
+            _currentUser = new Account
             {
                 Id = account.Id,
                 Name = account.Name,
@@ -76,5 +76,5 @@ public class UserService
         return _currentUser;
     }
 
-    public Acccount? GetCurrentUser() => _currentUser;
+    public Account? GetCurrentUser() => _currentUser;
 }
