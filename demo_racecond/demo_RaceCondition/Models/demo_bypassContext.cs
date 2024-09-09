@@ -16,7 +16,7 @@ namespace demo_RaceCondition.Models
         {
         }
 
-        public virtual DbSet<Acccount> Acccounts { get; set; } = null!;
+        public virtual DbSet<Account> Accounts { get; set; } = null!;
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -29,11 +29,11 @@ namespace demo_RaceCondition.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Acccount>(entity =>
+            modelBuilder.Entity<Account>(entity =>
             {
                 entity.HasKey(e => e.Name);
 
-                entity.ToTable("acccount");
+                entity.ToTable("account");
 
                 entity.Property(e => e.Name)
                     .HasMaxLength(50)
