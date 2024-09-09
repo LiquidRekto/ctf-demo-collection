@@ -1,0 +1,58 @@
+﻿# Ignore Visual Studio temporary files, build results, and
+# user-generated files
+.vs/
+*.user
+*.suo
+*.rsuser
+.vscode/
+.idea/
+.sln.docstates
+*.pdb
+
+# .NET Core
+bin/
+obj/
+*.db
+*.sqlite
+*.sqlite3
+
+# Logs
+*.log
+logs/
+
+# Docker
+Dockerfile
+*.tar
+**/docker_data/
+**/docker_db_data/
+**/.docker/
+**/data/
+
+# Build outputs
+out/
+publish/
+
+# ASP.NET Core Configuration files
+appsettings*.json
+
+# Ignore secrets
+secrets.json
+
+# SSL certificates
+*.crt
+*.key
+
+# macOS specific files
+.DS_Store
+
+# Windows specific files
+Thumbs.db
+
+# Rider IDE
+.idea/
+
+# Node.js
+node_modules/
+
+# Ignore .NET global tools
+.dotnet_tool/

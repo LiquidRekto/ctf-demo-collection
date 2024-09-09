@@ -3255,11 +3255,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\VSPRN221\\SSRF\\SSRF.csproj",
+      "projectUniqueName": "D:\\VSPRN221\\ctf-demo-collection\\SSRF\\SSRF.csproj",
       "projectName": "SSRF",
-      "projectPath": "D:\\VSPRN221\\SSRF\\SSRF.csproj",
+      "projectPath": "D:\\VSPRN221\\ctf-demo-collection\\SSRF\\SSRF.csproj",
       "packagesPath": "C:\\Users\\win\\.nuget\\packages\\",
-      "outputPath": "D:\\VSPRN221\\SSRF\\obj\\",
+      "outputPath": "D:\\VSPRN221\\ctf-demo-collection\\SSRF\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\win\\AppData\\Roaming\\NuGet\\NuGet.Config",

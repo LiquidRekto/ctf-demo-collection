@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Tk77QfI0uzT98vIe0Kyzc2Ke9Rmunea0elAEVSaFuCVqutV9XuuEbhoPnQcPEQbDuHGquzMRVwcJNz5QzuhWoQ==",
+  "dgSpecHash": "ivFyJieTPS5lF8TKAaf4k76nRKLAgUNJx3P6DZ6Vu21eKtsf66bH3tQjsCK7wkYbtiWjTtLT8gAtJpJ0zsy1og==",
   "success": true,
-  "projectFilePath": "D:\\VSPRN221\\SSRF\\SSRF.csproj",
+  "projectFilePath": "D:\\VSPRN221\\ctf-demo-collection\\SSRF\\SSRF.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\win\\.nuget\\packages\\microsoft.applicationinsights\\2.21.0\\microsoft.applicationinsights.2.21.0.nupkg.sha512",
     "C:\\Users\\win\\.nuget\\packages\\microsoft.applicationinsights.aspnetcore\\2.21.0\\microsoft.applicationinsights.aspnetcore.2.21.0.nupkg.sha512",
