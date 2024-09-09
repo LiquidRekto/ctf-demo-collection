@@ -21,7 +21,7 @@ obj/
 logs/
 
 # Docker
-Dockerfile
+
 *.tar
 **/docker_data/
 **/docker_db_data/
@@ -56,3 +56,4 @@ node_modules/
 
 # Ignore .NET global tools
 .dotnet_tool/
+
