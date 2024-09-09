@@ -5,28 +5,26 @@ services:
       context: .
       dockerfile: demo_RaceCondition/Dockerfile
     ports:
-      - "8080:80"
+      - "7212:443"
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - ConnectionStrings__DefaultConnection=Server=db,1433;Database=demo_bypass;User=sa;Password=s7venking2001.
+      - ConnectionStrings__DefaultConnection=Server=db,3306;Database=demo_bypass;User ID=root;Password=123;
     depends_on:
       - db
 
   db:
-    image: mcr.microsoft.com/mssql/server:2022-latest
+    image: mysql:8.0
+    restart: always
     environment:
-      SA_PASSWORD: "s7venking2001."
-      ACCEPT_EULA: "Y"
+      MYSQL_ROOT_PASSWORD: 123
+      MYSQL_DATABASE: demo_bypass
+      MYSQL_HOST: 127.0.0.1
     ports:
-      - "1433:1433"
+      - "3306:3306"
     volumes:
-      - mssql_data:/var/opt/mssql
-      - ./demo_bypass.sql:/tmp/mssql-init.sql
-    command: 
-      /bin/bash -c 
-      /opt/mssql/bin/sqlservr & 
-      sleep 30s && 
-      /opt/mssql-tools18/bin/sqlcmd -C -S localhost -U sa -P s7venking2001. -d master -i /tmp/mssql-init.sql
+      - db:/var/lib/mysql
+      - ./sql_dump:/docker-entrypoint-initdb.d
 
 volumes:
-  mssql_data:
+  db:
+    driver: local

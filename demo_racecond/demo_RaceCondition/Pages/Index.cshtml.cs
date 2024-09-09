@@ -13,7 +13,7 @@ namespace demo_RaceCondition.Pages
 
         public string Email { get; set; }
         public string CurrentUserName { get; set; }
-        public IndexModel(ILogger<IndexModel> logger,UserService userService)
+        public IndexModel(ILogger<IndexModel> logger, UserService userService)
         {
             _logger = logger;
             _userService = userService;
@@ -41,7 +41,6 @@ namespace demo_RaceCondition.Pages
             var userId = HttpContext.Session.GetInt32("CurrentUserId");
             if (userId.HasValue)
             {
-                _userService.UpdateEmail(userId.Value, Email);
                 SendConfirmationEmail(Email);
             }
 
@@ -50,6 +49,11 @@ namespace demo_RaceCondition.Pages
 
         private void SendConfirmationEmail(string email)
         {
+            var confirmationUrl = $"https://localhost:7212/Confirm?email={WebUtility.UrlEncode(email)}";
+
+            // Log the confirmation URL for troubleshooting
+            _logger.LogInformation("Confirmation URL: {0}", confirmationUrl);
+
             var smtpClient = new SmtpClient("smtp.gmail.com")
             {
                 Port = 587,
@@ -61,8 +65,8 @@ namespace demo_RaceCondition.Pages
             {
                 From = new MailAddress("hieunguyenhuy2001@gmail.com"),
                 Subject = "Email Update Confirmation",
-                Body = $"Please confirm your email update by clicking the link: <a href='http://localhost:7212/Confirm?email={WebUtility.UrlEncode(email)}'>Confirm Email</a>",
-                IsBodyHtml = true,
+                Body = $"Please confirm your email update by clicking the link: <a href='{confirmationUrl}'>Confirm Email</a>",
+                IsBodyHtml = true,  // Ensure the email is sent as HTML
             };
 
             mailMessage.To.Add(email);

@@ -1,13 +1,13 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using System.Web;
+using demo_RaceCondition.Models;
+using System.Net;
 
 namespace demo_RaceCondition.Pages
 {
     public class ConfirmModel : PageModel
     {
         private readonly UserService _userService;
-        public bool IsSuccess { get; set; }
 
         public ConfirmModel(UserService userService)
         {
@@ -18,23 +18,20 @@ namespace demo_RaceCondition.Pages
         {
             if (string.IsNullOrEmpty(email))
             {
-                IsSuccess = false;
+                ViewData["Message"] = "Invalid email confirmation request.";
                 return Page();
             }
-
-            // Decode the email from the query string
-            var decodedEmail = HttpUtility.UrlDecode(email);
-
-            // Find the user by email and confirm it
-            var user = _userService.GetAllUsers().FirstOrDefault(u => u.Email == decodedEmail);
+            var userId = HttpContext.Session.GetInt32("CurrentUserId");
+            _userService.UpdateEmail(userId.Value, email);
+            var user = _userService.GetAllUsers().FirstOrDefault(u => u.Email == email);
             if (user != null)
             {
-                _userService.ConfirmEmail(user.Id); // Confirm the email in the database
-                IsSuccess = true;
+                _userService.ConfirmEmail(user.Id);
+                ViewData["Message"] = "Your email has been successfully confirmed!";
             }
             else
             {
-                IsSuccess = false;
+                ViewData["Message"] = "User not found.";
             }
 
             return Page();
