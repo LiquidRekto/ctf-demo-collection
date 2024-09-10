@@ -10,6 +10,6 @@ namespace demo_RaceCondition.Models
         public string? Password { get; set; }
         public string? Role { get; set; }
         public string? Email { get; set; }
-        public bool? IsComfirmEmail { get; set; }
+        public bool? IsConfirmEmail { get; set; }
     }
 }

@@ -23,29 +23,28 @@ namespace demo_RaceCondition.Models
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("Server=127.0.0.1,1433;Database=demo_bypass;User=sa;Password=s7venking2001.");
+                optionsBuilder.UseMySql("server=127.0.0.1;database=demo_bypass;user id=root;password=123", Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.39-mysql"));
             }
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.UseCollation("utf8mb4_0900_ai_ci")
+                .HasCharSet("utf8mb4");
+
             modelBuilder.Entity<Account>(entity =>
             {
-                entity.HasKey(e => e.Name);
-
                 entity.ToTable("account");
 
-                entity.Property(e => e.Name)
-                    .HasMaxLength(50)
-                    .IsFixedLength();
+                entity.Property(e => e.Id).HasColumnName("ID");
 
                 entity.Property(e => e.Email)
                     .HasMaxLength(50)
                     .IsFixedLength();
 
-                entity.Property(e => e.Id)
-                    .ValueGeneratedOnAdd()
-                    .HasColumnName("ID");
+                entity.Property(e => e.Name)
+                    .HasMaxLength(50)
+                    .IsFixedLength();
 
                 entity.Property(e => e.Password)
                     .HasMaxLength(10)

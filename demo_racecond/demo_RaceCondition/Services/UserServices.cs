@@ -31,7 +31,7 @@ public class UserService
         if (user != null)
         {
             user.Email = newEmail;
-            user.IsComfirmEmail = false; // Reset email confirmation status
+            user.IsConfirmEmail = false; // Reset email confirmation status
             _context.SaveChanges();
         }
     }
@@ -42,7 +42,7 @@ public class UserService
         var user = GetUserById(id);
         if (user != null)
         {
-            user.IsComfirmEmail = true; // Set email as confirmed
+            user.IsConfirmEmail = true; // Set email as confirmed
             _context.SaveChanges();
         }
     }
@@ -70,7 +70,7 @@ public class UserService
                 Name = account.Name,
                 Email = account.Email,
                 Role = account.Role,
-                IsComfirmEmail = account.IsComfirmEmail // Reflect confirmation status on login
+                IsConfirmEmail = account.IsConfirmEmail // Reflect confirmation status on login
             };
         }
         return _currentUser;

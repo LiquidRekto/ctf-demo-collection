@@ -7,7 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddRazorPages();
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-builder.Services.AddDbContext<demo_bypassContext>(option => option.UseSqlServer(connectionString));
+builder.Services.AddDbContext<demo_bypassContext>(option => option.UseMySql(connectionString, new MySqlServerVersion(new Version(8, 0, 21))));
 builder.Services.AddScoped<UserService>();
 builder.Services.AddTransient<UserService>();
 builder.Services.AddSession(options =>
