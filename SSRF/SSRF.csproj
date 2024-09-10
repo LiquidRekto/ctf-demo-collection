@@ -15,14 +15,15 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update=".dockerignore">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="docker-compose.yml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
 
 	  <None Update="Dockerfile">
-		  <CopyToOutputDirectory>
-			  Always
-		  </CopyToOutputDirectory>
+		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	  </None>
   </ItemGroup>
 
