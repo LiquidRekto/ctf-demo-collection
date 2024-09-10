@@ -5,7 +5,7 @@ services:
       context: .
       dockerfile: demo_RaceCondition/Dockerfile
     ports:
-      - "7212:443"
+      - "7212:80"
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ConnectionStrings__DefaultConnection=Server=db,3306;Database=demo_bypass;User ID=root;Password=123;
